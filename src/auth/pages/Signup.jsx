@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import Divider from "@/components/ui/divider";
 import { Facebook, Twitter, Github } from "lucide-react";
@@ -116,12 +117,9 @@ const Signup = () => {
             </label>
           </div>
 
-          <button
-            type="submit"
-            className="w-full rounded-md bg-primary py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
-          >
+          <Button type="submit" className="w-full" size="lg">
             Sign up
-          </button>
+          </Button>
         </form>
 
         <p className="mt-4 text-center text-sm text-text-color">
