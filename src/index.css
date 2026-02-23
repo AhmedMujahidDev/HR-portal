@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -42,11 +43,17 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-text-color: var(--text-color);
+  --color-text-color-secondary: var(--text-color-secondary);
+
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+
 }
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(0.96 0.01 250);
+  --background: #fff;
   --foreground: oklch(0.2 0.02 250);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.2 0.02 250);
@@ -62,7 +69,7 @@
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.9 0.01 250);
-  --input: oklch(0.92 0.01 250);
+  --input: #e8ebf1;
   --ring: oklch(0.708 0 0);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -77,17 +84,20 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  --text-color: rgb(151, 161, 192);
+  --text-color-secondary: #2a5ad9;
 }
 
 .dark {
   --background: oklch(0.22 0.03 250);
   --foreground: oklch(0.95 0 0);
   --card: oklch(0.26 0.04 250);
-  --card-foreground: oklch(0.95 0 0);
+  --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.65 0.2 2500);
-  --primary-foreground: oklch(0.15 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
@@ -117,7 +127,43 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Smooth scroll inside scrollable cards */
+.scroll-smooth-inner {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Slim scrollbar – visible on hover or when form is in use (focus) */
+.signup-card-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+.signup-card-scroll:hover,
+.signup-card-scroll:focus-within {
+  scrollbar-color: oklch(0.75 0.02 250 / 0.5) transparent;
+}
+.signup-card-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.signup-card-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.signup-card-scroll::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 999px;
+}
+.signup-card-scroll:hover::-webkit-scrollbar-thumb,
+.signup-card-scroll:focus-within::-webkit-scrollbar-thumb {
+  background: oklch(0.75 0.02 250 / 0.45);
+}
+.signup-card-scroll::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.6 0.02 250 / 0.6);
 }
