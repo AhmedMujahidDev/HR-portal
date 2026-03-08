@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import Divider from "@/components/ui/divider";
+import Divider from "@/components/ui/dividerCustom";
 import { Facebook, Twitter, Github } from "lucide-react";
 import logo from "../../asset/hr-logo.png";
 import Background from "../../asset/background.webp";
@@ -32,7 +32,7 @@ const Signup = () => {
 
       <div
         className="signup-card-scroll relative w-full max-w-md max-h-[90vh] overflow-y-auto scroll-smooth-inner p-10 z-10
-          rounded-2xl border border-l-4 bg-card/95 backdrop-blur-xl shadow-xl shadow-primary/5"
+          rounded-2xl bg-card/95 backdrop-blur-xl shadow-xl shadow-primary/5"
       >
         <img className="mx-auto w-24 mb-4" src={logo} alt="logo" />
 
@@ -110,7 +110,7 @@ const Signup = () => {
               />
               <p className="font-sans text-sm">
                 I agree to{" "}
-                <span className="font-sans text-sm text-color-secondary">
+                <span className="font-sans text-sm text-text-color-secondary">
                   the terms and conditions
                 </span>
               </p>
