@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import logo from "../../asset/hr-logo.png";
 import Background from "../../asset/background.webp";
 
-const forgotPassword = () => {
+const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
@@ -27,7 +27,7 @@ const forgotPassword = () => {
 
       <div
         className="signup-card-scroll relative w-full max-w-md max-h-[90vh] overflow-y-auto scroll-smooth-inner p-10 z-10
-          rounded-2xl border border-l-4 bg-card/95 backdrop-blur-xl shadow-xl shadow-primary/5"
+          rounded-2xl bg-card/95 backdrop-blur-xl shadow-xl shadow-primary/5"
       >
         <img className="mx-auto w-24 mb-4" src={logo} alt="logo" />
 
@@ -55,7 +55,7 @@ const forgotPassword = () => {
           </div>
 
           <Button type="submit" className="w-full cursor-pointer" size="lg">
-           Forgot Password
+           <Link to="/reset-password">Forgot Password</Link>
           </Button>
           {message && <p className="text-green-600">{message}</p>}
 
@@ -68,4 +68,4 @@ const forgotPassword = () => {
   )
 }
 
-export default forgotPassword
+export default ForgotPassword
