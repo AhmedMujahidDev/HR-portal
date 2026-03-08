@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
-import Divider from "@/components/ui/divider"
+import Divider from "@/components/ui/dividerCustom"
 import { Facebook, Twitter, Github} from "lucide-react"
 import logo from "../../asset/hr-logo.png"
 import Background from "../../asset/background.webp"
 
 const Login = () => {
+  const navigate = useNavigate()
   const [remember, setRemember] = useState(false)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -41,7 +42,7 @@ const Login = () => {
       localStorage.removeItem("loginData")
     }
 
-    console.log("Login submitted")
+    navigate("/admin/dashboard")
   }
 
   return (
@@ -50,7 +51,7 @@ const Login = () => {
 
     <div className="absolute inset-0 bg-black/5"></div>
 
-    <div className="relative w-full max-w-md rounded-xl border  bg-card p-10 shadow-sm z-10">
+    <div className="relative w-full max-w-md rounded-xl bg-card p-10 shadow-sm z-10">
 
         <img className="mx-auto w-24 mb-4" src={logo} alt="logo" />
 
@@ -108,7 +109,7 @@ const Login = () => {
             </p>
           </div>
 
-          <Button type="submit" className="w-full" size="lg">
+          <Button type="submit" className="w-full cursor-pointer" size="lg">
             Login
           </Button>
 

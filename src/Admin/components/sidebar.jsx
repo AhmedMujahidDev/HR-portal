@@ -1,152 +1,64 @@
-// import React from 'react'
-// import { Link } from 'react-router-dom'
-// import logo from '../../asset/hr-logo.png'
+import React from "react";
+import { Link } from "react-router-dom";
+import logo from "../../asset/hr-logo.png";
+import { HelpCircle } from "lucide-react";
 
-// const Sidebar = () => {
-//   return (
-//     <>
-//         <aside className='bg-[#8c96a9] w-64 h-screen bg-grey-800 test-white p-4'>
-//             <img src={logo} alt="logo" className='w-24'/>
-//             <ul className='space-y-4'>
-//                 <h1 className='text-2xl font-bold mb-6'>Admin Panel</h1>
-//                 <li>
-//                     <Link to ="#" className="text-xl hover:text-[#316aff]">Dashboard</Link>
-//                 </li>
+const link = [
+  { name: "Dashboard", href: "/dashboard" },
+  { name: "Employee", href: "/employee" },
+  { name: "Attendance", href: "/attendance" },
+  { name: "Leave", href: "/leave" },
+  { name: "Payroll", href: "/payroll" },
+  { name: "Task Management", href: "/task" },
+  { name: "Profile", href: "/profile" },
+  { name: "Role Permissions", href: "/role" },
+  { name: "Settings", href: "/settings" },
+];
 
-//                 <li>
-//                     <Link to ="#" className="text-xl hover:text-[#316aff]">Employee</Link>
-//                 </li>
-
-//                 <li>
-//                     <Link to ="#" className="text-xl hover:text-[#316aff]">Attendance</Link>
-//                 </li>
-
-//                 <li>
-//                     <Link to ="#" className="text-xl hover:text-[#316aff]">Leave</Link>
-//                 </li>
-
-//                 <li>
-//                     <Link to ="#" className="text-xl hover:text-[#316aff]">Payroll</Link>
-//                 </li>
-
-//                 <li>
-//                     <Link to ="#" className="text-xl hover:text-[#316aff]">Profile</Link>
-//                 </li>
-
-//                 <li>
-//                     <Link to ="#" className="text-xl hover:text-[#316aff]">Login</Link>
-//                 </li>
-
-//                 <li>
-//                     <Link to ="#" className="text-xl hover:text-[#316aff]">Register</Link>
-//                 </li>
-
-//                 <li>
-//                     <Link to ="#" className="text-xl hover:text-[#316aff]">Forgot Password</Link>
-//                 </li>
-//             </ul>
-//         </aside> 
-//     </>
-//   )
-// }
-
-// export default Sidebar
-
-
-import { 
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarGroup,
-  SidebarGroupLabel,
-  SidebarGroupContent,
-  SidebarHeader,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarProvider,
-} from "@/components/ui/sidebar";
-import HR from "../../asset/hr-logo.png"
-
-export default function SidebarSection() {
+const Sidebar = ({ isOpen }) => {
   return (
-    <SidebarProvider>
-      <div className="flex min-h-screen">
-        {/* Sidebar */}
-        <Sidebar>
-          <SidebarHeader>
-            {/* <h2 className="text-lg font-semibold">My App</h2> */}
-            <img 
-            src={HR} 
-            alt="logo" 
-            className=""/>
-          </SidebarHeader>
+    <section
+      className={`border-r transition-all duration-300 ${
+        isOpen ? "w-60 px-6 " : "w-32 px-4"
+      }`}
+    >
+      <div className="mx-auto w-full">
+        {/* Logo stays visible always, just resizes */}
+        <img
+          src={logo}
+          alt="Logo"
+          className={`mx-0 object-contain transition-all duration-300 ${
+            isOpen ? "w-24 h-24" : "w-20 h-20"
+          }`}
+        />
 
-          <SidebarContent>
-            <SidebarGroup>
-              <SidebarGroupLabel className="text-2xl font-bold">
-                Dashboard
-              </SidebarGroupLabel>
+        {/* Menu + help hide when collapsed but keep column width */}
+        <div
+          className={`mt-8 space-y-10 transition-opacity duration-200 ${
+            isOpen ? "opacity-100" : "opacity-0 pointer-events-none hidden"
+          }`}
+        >
+          <ul className="flex flex-col items-start gap-6">
+            {link.map((item, i) => (
+              <li key={i} className="list-none relative group cursor-pointer">
+                <Link
+                  to={item.href}
+                  className="text-sm sm:text-sm md:text-base hover:text-[#316aff] font-sans"
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
 
-              <SidebarGroupContent>
-                <SidebarMenu>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton className="text-lg font-medium">
-                      Employee
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-
-                  <SidebarMenuItem>
-                    <SidebarMenuButton className="text-lg font-medium">
-                      Attendance
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-
-                  <SidebarMenuItem>
-                    <SidebarMenuButton className="text-lg font-medium">
-                      Leave
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-
-                  <SidebarMenuItem>
-                    <SidebarMenuButton className="text-lg font-medium">
-                      Payroll
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-
-                  <SidebarMenuItem>
-                    <SidebarMenuButton className="text-lg font-medium">
-                      Login
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-
-                  <SidebarMenuItem>
-                    <SidebarMenuButton className="text-lg font-medium">
-                      SignUp
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-
-                  <SidebarMenuItem>
-                    <SidebarMenuButton className="text-lg font-medium">
-                      Forgot Password
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-
-                  <SidebarMenuItem>
-                    <SidebarMenuButton className="text-lg font-medium">
-                      Profile
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                </SidebarMenu>
-              </SidebarGroupContent>
-            </SidebarGroup>
-          </SidebarContent>
-
-          <SidebarFooter>
-            <p className="text-sm text-muted-foreground">© 2026</p>
-          </SidebarFooter>
-        </Sidebar>
+          <div className="flex items-center gap-3 text-sm sm:text-sm md:text-base font-sans mt-4 border p-2 rounded-xl cursor-pointer hover:bg-[#ecf2fd26]">
+            <HelpCircle className="w-6 h-6" />
+            <span>Help and Support</span>
+          </div>
+        </div>
       </div>
-    </SidebarProvider>
+    </section>
   );
-}
+};
+
+export default Sidebar;
